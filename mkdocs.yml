@@ -1,0 +1,7 @@
+site_name: Juny's Log
+# site_url:
+
+theme:
+  name: material
+  language: ko
+

@@ -1,19 +1,46 @@
-# Welcome to MkDocs
+# Juny's Log
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+안녕하세요! **Juny's Log**에 오신 것을 환영합니다.
 
-## Commands
+이곳은 제가 배우고, 경험하고, 생각한 것들을 자유롭게 기록하는 개인 공간입니다.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-* `나는 박준후다` 
-* `나는 세계제일이다`
+새롭게 알게 된 지식부터 직접 만들어 본 프로젝트, 흥미롭게 느낀 주제와 일상적인 생각까지 다양한 이야기를 담아가려고 합니다.
 
-## Project layout
+특정한 분야나 형식에 얽매이지 않고, 관심이 가는 것들을 탐구하며 그 과정에서 얻은 경험을 기록합니다.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+---
+
+## 🗂 Explore
+
+**📚 Notes**
+
+공부하거나 탐구하면서 새롭게 알게 된 지식들을 정리합니다.
+
+**💻 Projects**
+
+직접 기획하고 개발한 프로젝트의 과정과 결과, 시행착오를 기록합니다.
+
+**💡 Thoughts**
+
+다양한 주제에 대한 생각과 의견, 궁금증을 자유롭게 남깁니다.
+
+**🌏 Experiences**
+
+취미와 관심사, 일상에서 경험한 특별한 순간들을 기록합니다.
+
+---
+
+## ✨ Recent Posts
+
+최근에 작성한 글들을 소개하는 공간입니다.
+
+새로운 기록이 추가되면 이곳에서도 확인할 수 있도록 정리할 예정입니다.
+
+---
+
+## 🌱 About This Space
+
+이 웹사이트는 계속해서 변화하고 확장되는 공간입니다.
+
+때로는 공부한 내용을 정리하는 노트가 되고, 때로는 새로운 아이디어를 실험하는 공간이 되며, 때로는 소소한 이야기를 남기는 블로그가 될 것입니다.
+

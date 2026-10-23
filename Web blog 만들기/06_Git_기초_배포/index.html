@@ -1,0 +1,1218 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../05_MkDocs_%EC%84%A4%EC%B9%98_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EA%B5%AC%EC%A1%B0/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>06. Git 기초, 배포 - Juny's Log</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#06-git" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="Juny&#39;s Log" class="md-header__button md-logo" aria-label="Juny's Log" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Juny's Log
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              06. Git 기초, 배포
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Juny&#39;s Log" class="md-nav__button md-logo" aria-label="Juny's Log" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Juny's Log
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Juny's Log
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web blog 만들기
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Web blog 만들기
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_WebSite_WebPage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. 웹사이트(Web Site)와 웹페이지(Web Page)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_github_blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. GitHub와 GitHub 블로그
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_GitHub_Pages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. GitHub Pages로 HTML 웹페이지 공개하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_Markdown_MkDocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Markdown과 MkDocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_MkDocs_%EC%84%A4%EC%B9%98_%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EA%B5%AC%EC%A1%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. MkDocs 설치와 프로젝트 구조 설정
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Git 기초, 배포
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Git 기초, 배포
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-repository-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Repository 만들기(Page 설정)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Repository 만들기(Page 설정)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        생성 순서
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파일 Upload
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        웹에서 만든 파일 Upload
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocsyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mkdocs.yml 수정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파일을 올리는 과정
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. GitHub Actions 설정
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. GitHub Actions 설정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow 파일 만들기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow 파일 설명
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-github-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. GitHub Pages 설정 변경
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Actions 실행 확인
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 브라우저에서 확인
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 앞으로의 작업 흐름
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        참고: 터미널로 배포하는 방법
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="참고: 터미널로 배포하는 방법">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Repository 가져오기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 변경 사항 업로드
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 공용 PC에서 로그인 정보 지우기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-repository-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Repository 만들기(Page 설정)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Repository 만들기(Page 설정)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        생성 순서
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파일 Upload
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        웹에서 만든 파일 Upload
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocsyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mkdocs.yml 수정
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        파일을 올리는 과정
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. GitHub Actions 설정
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. GitHub Actions 설정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow 파일 만들기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow 파일 설명
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-github-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. GitHub Pages 설정 변경
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Actions 실행 확인
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 브라우저에서 확인
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 앞으로의 작업 흐름
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        참고: 터미널로 배포하는 방법
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="참고: 터미널로 배포하는 방법">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Repository 가져오기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 변경 사항 업로드
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 공용 PC에서 로그인 정보 지우기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="06-git">06. Git 기초, 배포</h1>
+<h2 id="1-repository-page">1. Repository 만들기(Page 설정)</h2>
+<p>GitHub Pages는 Repository의 이름을 사용자 이름으로 만들면 <code>.github.io</code> 형식의 URL로 Web Site를 만들어 준다.</p>
+<p>따라서 우리는 사용자 이름과 같은 Repository를 만든다.</p>
+<p>Repository 이름 규칙: <code>&lt;username&gt;.github.io</code></p>
+<h3 id="_1">생성 순서</h3>
+<ol>
+<li>GitHub에 로그인한다.</li>
+<li>오른쪽 상단의 <code>+</code> 버튼을 클릭하고 <code>New repository</code>를 선택한다.</li>
+<li>Repository name에 <code>&lt;username&gt;.github.io</code>를 입력한다.</li>
+<li>공개 범위를 <code>Public</code>으로 설정한다.</li>
+<li><code>Create repository</code> 버튼을 클릭한다.</li>
+</ol>
+<h3 id="upload">파일 Upload</h3>
+<p>Local에서 작성했던 MkDocs 설정 파일을 GitHub에서 직접 Upload한다. 작성한 파일이 없다면 <code>Creating new file</code>을 이용한다.</p>
+<p><strong>폴더 구조 확인</strong></p>
+<pre><code class="language-text">Juny's Log/
+├── docs/
+│   └── index.md
+└── mkdocs.yml
+</code></pre>
+<p>GitHub에는 이 폴더의 내용 전체를 올린다.</p>
+<h3 id="upload_1">웹에서 만든 파일 Upload</h3>
+<ol>
+<li>방금 만든 Repository 페이지로 이동한다.</li>
+<li><code>Add file</code> → <code>Upload files</code> 클릭</li>
+<li><code>docs/</code> 폴더와 <code>mkdocs.yml</code> 파일을 드래그하거나 선택한다.</li>
+<li>하단 <code>Commit changes</code>에서 적당한 메모를 작성한 후 <code>Commit changes</code> 버튼 클릭</li>
+</ol>
+<p>폴더째로 드래그하면 폴더 구조 그대로 올라간다.</p>
+<h3 id="mkdocsyml">mkdocs.yml 수정</h3>
+<p>(Local에서 수정한 후 Uploading 권장)</p>
+<p>MkDocs의 설정 파일을 GitHub의 Web Site에 맞게 수정한다.</p>
+<p><code>Repository</code> → <code>Code</code> → <code>mkdocs.yml</code> → <code>Edit this file(연필 아이콘)</code> → 수정 → <code>Commit</code></p>
+<pre><code class="language-yaml">site_name: Juny's Log
+site_url: https://&lt;username&gt;.github.io/
+</code></pre>
+<p><strong>설명</strong></p>
+<ul>
+<li><code>site_name</code>: Web Site의 이름</li>
+<li><code>site_url</code>: GitHub Pages를 통해 배포할 Web Site의 주소</li>
+</ul>
+<h3 id="_2">파일을 올리는 과정</h3>
+<p>Git을 이용해 파일을 GitHub에 올리는 과정은 일반적으로 <code>add → commit → push</code>의 순서로 이루어진다.</p>
+<ol>
+<li><strong>add</strong>: 변경한 파일을 Git의 Staging Area에 추가한다. 다음 Commit에 포함할 파일을 선택하는 과정이다.</li>
+<li><strong>commit</strong>: 추가한 파일의 변경 내용을 하나의 버전으로 기록한다. 언제 어떤 부분을 수정했는지 관리할 수 있다.</li>
+<li><strong>push</strong>: Local Repository에 기록한 Commit을 GitHub의 원격 Repository로 전송한다.</li>
+</ol>
+<p>GitHub 웹에서 <code>Upload files</code> → <code>Commit changes</code>를 클릭하면 별도로 Git 명령어를 입력하지 않고 원격 Repository에 파일과 Commit을 생성할 수 있다.</p>
+<p><strong>Commit 메시지:</strong> Commit할 때는 어떤 변경인지 설명하는 메시지를 남긴다.</p>
+<hr />
+<h2 id="2-github-actions">2. GitHub Actions 설정</h2>
+<p>GitHub Actions는 반복적인 작업을 자동으로 처리해 주는 기능이다.</p>
+<p>"파일을 Push하면 자동으로 빌드 + 배포"하도록 설정할 수 있다.</p>
+<ol>
+<li>내가 파일을 올린다. (Push)</li>
+<li>GitHub Actions가 감지한다.</li>
+<li>Markdown → HTML 변환 (Build)</li>
+<li>GitHub Pages에 배포한다.</li>
+<li>사이트 업데이트 완료</li>
+</ol>
+<p>Actions는 <code>.github/workflows/</code> 폴더 안에 <code>.yml</code> 파일을 넣어서 설정한다.</p>
+<h3 id="workflow">Workflow 파일 만들기</h3>
+<ol>
+<li>Repository 페이지에서 <code>Add file</code> → <code>Create new file</code> 클릭</li>
+<li>파일 이름 입력란에 <code>.github/workflows/deploy.yml</code> 입력</li>
+<li>아래 내용을 붙여 넣는다.</li>
+</ol>
+<pre><code class="language-yaml">name: Deploy MkDocs
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install MkDocs
+        run: pip install mkdocs-material
+
+      - name: Build
+        run: mkdocs build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+</code></pre>
+<ol>
+<li>오른쪽 위 <code>Commit changes</code> 클릭 → 메시지 확인 후 <code>Commit changes</code></li>
+</ol>
+<h3 id="workflow_1">Workflow 파일 설명</h3>
+<p>Workflow 파일에는 GitHub Actions가 언제, 어떤 작업을 실행할지 설정한다.</p>
+<ul>
+<li><code>name</code>: Workflow의 이름</li>
+<li><code>on</code>: Workflow가 실행되는 조건이다. 여기서는 main 브랜치에 Push하면 실행된다.</li>
+<li><code>workflow_dispatch</code>: GitHub 웹에서 수동으로 Workflow를 실행할 수 있도록 한다.</li>
+<li><code>permissions</code>: GitHub Pages 배포에 필요한 권한을 설정한다.</li>
+<li><code>jobs</code>: 자동으로 실행할 작업들을 정의한다.</li>
+<li><code>runs-on</code>: 작업을 실행할 환경이다. 여기서는 Ubuntu를 사용한다.</li>
+<li><code>steps</code>: 작업을 수행하는 구체적인 단계이다.</li>
+<li><code>checkout</code>: Repository의 파일을 가져온다.</li>
+<li><code>setup-python</code>: Python 실행 환경을 준비한다.</li>
+<li><code>pip install mkdocs-material</code>: MkDocs와 Material 테마를 설치한다.</li>
+<li><code>mkdocs build</code>: Markdown 파일을 HTML로 변환한다.</li>
+<li><code>upload-pages-artifact</code>: 변환된 파일을 배포할 수 있도록 업로드한다.</li>
+<li><code>deploy-pages</code>: 생성된 웹사이트를 GitHub Pages에 배포한다.</li>
+</ul>
+<hr />
+<h2 id="3-github-pages">3. GitHub Pages 설정 변경</h2>
+<p>GitHub Pages를 통해 웹사이트가 공개되도록 설정한다.</p>
+<ol>
+<li>GitHub Repository 페이지로 이동한다.</li>
+<li>상단의 <code>Settings</code> 클릭</li>
+<li>왼쪽 메뉴에서 <code>Pages</code> 선택</li>
+<li><code>Build and deployment</code> 항목 확인</li>
+<li><code>Source</code>를 <code>GitHub Actions</code>로 설정한다.</li>
+</ol>
+<p>이번에는 GitHub Actions에서 직접 배포하도록 설정했기 때문에 Branch를 별도로 선택하지 않는다.</p>
+<p>참고로 <code>Deploy from a branch</code>는 특정 브랜치에 저장된 파일을 배포할 때 사용하는 방식이다. <code>mkdocs gh-deploy</code>로 <code>gh-pages</code> 브랜치에 배포하는 경우에는 <code>gh-pages / (root)</code>를 선택할 수 있다.</p>
+<hr />
+<h2 id="4-actions">4. Actions 실행 확인</h2>
+<p>Workflow 파일을 생성한 후에는 GitHub Actions가 정상적으로 실행되는지 확인한다.</p>
+<ol>
+<li>Repository 페이지의 <code>Actions</code> 탭 클릭</li>
+<li>왼쪽에서 <code>Deploy MkDocs</code> Workflow 선택</li>
+<li>실행 기록을 클릭하여 진행 상태 확인</li>
+<li>초록색 체크 표시가 나타나면 실행 성공</li>
+</ol>
+<p>만약 빨간색 X 표시가 나타난다면 실행 과정에서 오류가 발생한 것이다.</p>
+<p>해당 실행 기록을 클릭하면 어느 단계에서 오류가 발생했는지 확인할 수 있다.</p>
+<p>주로 <code>mkdocs.yml</code> 파일의 문법이나 파일 경로, Markdown 파일 이름 등을 확인하면 된다.</p>
+<hr />
+<h2 id="5">5. 브라우저에서 확인</h2>
+<p>배포가 정상적으로 완료되었다면 브라우저에서 Web Site를 확인할 수 있다.</p>
+<p>주소 창에 다음 URL을 입력한다.</p>
+<p><code>https://&lt;username&gt;.github.io/</code></p>
+<p><code>docs/index.md</code>에 작성한 내용이 첫 화면으로 나타나면 배포에 성공한 것이다.</p>
+<p>웹사이트가 나타나지 않는다면 다음 사항을 확인한다.</p>
+<ol>
+<li>Repository 이름이 정확한지 확인</li>
+<li>GitHub Actions 실행이 성공했는지 확인</li>
+<li><code>Settings</code> → <code>Pages</code> 설정 확인</li>
+</ol>
+<p>첫 배포 후에는 웹사이트가 반영되기까지 약간의 시간이 걸릴 수 있다.</p>
+<hr />
+<h2 id="6">6. 앞으로의 작업 흐름</h2>
+<ol>
+<li>VSCode에서 Markdown 파일 작성, 수정</li>
+<li>GitHub 웹에서 <code>Upload files</code> → <code>Commit changes</code></li>
+<li>Actions가 자동으로 Build, 배포</li>
+<li>브라우저에서 확인</li>
+</ol>
+<p>이 과정을 반복하면 Markdown 파일만 수정해도 Web Site를 업데이트할 수 있다.</p>
+<hr />
+<h2 id="_3">참고: 터미널로 배포하는 방법</h2>
+<p>앞에서는 GitHub 웹사이트에서 파일을 직접 Upload하였다.</p>
+<p>하지만 Git을 설치하면 터미널에서도 파일을 업로드할 수 있다.</p>
+<h3 id="1-repository">1. Repository 가져오기</h3>
+<p>먼저 GitHub에 있는 Repository를 Local로 복제한다.</p>
+<pre><code class="language-bash">git clone https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git
+</code></pre>
+<p><code>git clone</code>은 원격 Repository의 파일과 Git 기록을 내 컴퓨터로 가져오는 명령어이다.</p>
+<p>복제가 완료되면 해당 폴더로 이동한다.</p>
+<pre><code class="language-bash">cd &lt;username&gt;.github.io
+</code></pre>
+<h3 id="2">2. 변경 사항 업로드</h3>
+<p>Markdown 파일을 수정한 후 터미널에서 다음 명령어를 실행한다.</p>
+<pre><code class="language-bash">git status
+git add .
+git commit -m &quot;Update Markdown files&quot;
+git push origin main
+</code></pre>
+<p>각 명령어의 역할은 다음과 같다.</p>
+<ul>
+<li><code>git status</code>: 현재 변경된 파일 확인</li>
+<li><code>git add .</code>: 변경된 파일을 Staging Area에 추가</li>
+<li><code>git commit -m "..."</code>: 변경 사항을 기록</li>
+<li><code>git push origin main</code>: 변경 사항을 GitHub에 업로드</li>
+</ul>
+<p>Push가 완료되면 GitHub Actions가 자동으로 실행되어 Web Site가 업데이트된다.</p>
+<h3 id="3-pc">3. 공용 PC에서 로그인 정보 지우기</h3>
+<p>학교 컴퓨터 등 공용 PC에서 GitHub를 이용했다면 사용 후 계정 정보를 정리해야 한다.</p>
+<ol>
+<li>GitHub 웹사이트에서 로그아웃한다.</li>
+<li>VSCode에서 GitHub 계정에 로그인했다면 로그아웃한다.</li>
+<li>GitHub CLI를 사용했다면 다음 명령어로 로그아웃한다.</li>
+</ol>
+<pre><code class="language-bash">gh auth logout --hostname github.com
+</code></pre>
+<ol>
+<li>Windows의 <code>자격 증명 관리자</code>에서 자신이 저장한 GitHub 인증 정보가 있는지 확인하고 삭제한다.</li>
+<li>필요하다면 Local에 복제한 Repository 폴더도 삭제한다.</li>
+</ol>
+<p>웹사이트에서 로그아웃하더라도 Git 프로그램에 인증 정보가 별도로 저장되어 있을 수 있으므로 주의해야 한다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

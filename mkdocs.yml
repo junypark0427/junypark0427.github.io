@@ -4,4 +4,20 @@ site_name: Juny's Log
 theme:
   name: material
   language: ko
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: 어두운 테마로 전환
 
+    - scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: 밝은 테마로 전환
+  
+extra_css:
+   - stylesheets/extra.css

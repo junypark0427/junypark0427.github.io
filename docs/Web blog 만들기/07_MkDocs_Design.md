@@ -1,0 +1,317 @@
+# 7. mkdocs.yml 디자인
+
+MkDocs 웹사이트의 디자인은 주로 `mkdocs.yml` 파일에서 설정한다. 사이트 이름과 설명뿐 아니라 색상, 폰트, 로고, 메뉴 기능 등을 변경할 수 있다.
+
+MkDocs의 설정을 GitHub에서 직접 테스트할 경우, 수정한 내용을 업로드한 후 배포가 완료될 때까지 기다려야 한다. 따라서 디자인을 변경할 때는 **Local 환경에서 `mkdocs serve` 명령어로 먼저 확인**하는 것이 편리하다.
+
+### Local에서 디자인 확인하기
+
+1. VSCode에서 MkDocs 프로젝트 폴더를 연다.
+2. 터미널에서 `mkdocs.yml` 파일이 있는 폴더로 이동한다.
+3. 다음 명령어를 실행한다.
+
+   ```bash
+   mkdocs serve
+   ```
+
+4. 브라우저에서 `http://127.0.0.1:8000/`에 접속한다.
+5. `mkdocs.yml`이나 `docs/` 내부 파일을 수정하고 저장하면 변경 사항이 자동으로 반영된다.
+
+터미널에서 `Ctrl + C`를 누르면 Local 서버를 종료할 수 있다.
+
+이 방법은 GitHub에 파일을 업로드하지 않고도 사이트의 디자인과 내용을 확인할 수 있다는 장점이 있다. 단, 실제 GitHub Pages 배포가 정상적으로 작동하는지는 최종적으로 배포 후 확인해야 한다.
+
+---
+
+## 사이트 기본 정보
+
+`mkdocs.yml`에서는 `site_name`, `theme`, `nav`처럼 최상위에 작성하는 Key의 **순서는 상관없다.** 다만 YAML에서는 들여쓰기가 구조를 결정하므로 주의해야 한다.
+
+```yaml
+site_name: Juny's Log
+site_description: 공부, 프로젝트, 관심사를 기록하는 개인 웹사이트
+site_author: Juny
+```
+
+- `site_name`: 웹사이트의 이름을 설정한다. 브라우저 제목이나 사이트 상단 등에 사용된다. **필수 항목**이다.
+- `site_description`: 웹사이트에 대한 간단한 설명을 작성한다. 검색 엔진이나 페이지의 메타 정보에 사용될 수 있다.
+- `site_author`: 사이트 작성자의 이름을 설정한다. 메타 정보에 사용될 수 있으며, 별도의 자기소개 페이지가 자동으로 만들어지는 것은 아니다.
+
+배포할 웹사이트의 주소는 `site_url`로 설정할 수 있다.
+
+```yaml
+site_url: https://<username>.github.io/
+```
+
+위 주소에서 `<username>`은 본인의 GitHub 사용자 이름으로 바꿔야 한다.
+
+---
+
+## 색상 바꾸기
+
+Material for MkDocs에서는 `theme` 아래의 `palette` 설정을 이용해 웹사이트의 색상을 변경할 수 있다.
+
+```yaml
+theme:
+  name: material
+  palette:
+    scheme: default
+    primary: indigo
+    accent: amber
+```
+
+- `name: material`: Material 테마를 사용한다.
+- `scheme: default`: 밝은 테마를 사용한다. 어두운 테마는 `slate`이다.
+- `primary`: 사이트의 주요 색상을 지정한다.
+- `accent`: 링크에 마우스를 올렸을 때처럼 상호작용 요소에 사용되는 강조 색상을 지정한다.
+
+### primary, accent 색상 옵션
+
+`primary`에는 사이트 상단 영역과 주요 UI 요소에 적용할 색상을 지정한다. `accent`에는 버튼, 링크 등 강조가 필요한 요소의 색상을 지정한다.
+
+예를 들어 다음과 같은 색상 이름을 사용할 수 있다.
+
+| 색상 이름 | 의미 |
+| --- | --- |
+| `red` | 빨간색 |
+| `pink` | 분홍색 |
+| `purple` | 보라색 |
+| `indigo` | 남색 계열 |
+| `blue` | 파란색 |
+| `light blue` | 밝은 파란색 |
+| `cyan` | 청록색 계열 |
+| `teal` | 청록색 |
+| `green` | 초록색 |
+| `amber` | 황색 계열 |
+| `orange` | 주황색 |
+| `deep orange` | 진한 주황색 |
+
+`primary`에서는 이 밖에 `brown`, `grey`, `blue grey`, `black`, `white` 등도 사용할 수 있다. `accent`에서 사용할 수 있는 색상은 `primary`와 일부 차이가 있으므로 공식 문서를 참고한다.
+
+---
+
+## 밝은/어두운 테마 토글 추가
+
+웹사이트 방문자가 밝은 테마와 어두운 테마를 직접 바꿀 수 있도록 토글 버튼을 추가할 수 있다.
+
+`palette`에 설정을 두 개 작성하면 된다.
+
+```yaml
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: 어두운 테마로 전환
+
+    - scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: 밝은 테마로 전환
+```
+
+- `default`: 밝은 테마이다.
+- `slate`: 어두운 테마이다.
+- `toggle.icon`: 전환 버튼에 표시할 아이콘을 설정한다.
+- `toggle.name`: 버튼에 마우스를 올렸을 때 표시할 설명을 설정한다.
+
+위와 같이 설정하면 사이트 상단에 테마 전환 버튼이 나타난다. 각 테마에 `primary`, `accent`를 따로 지정하는 것도 가능하다.
+
+**주의:** 색상 설정과 테마 토글은 둘 다 `theme.palette`를 사용하므로, 실제 `mkdocs.yml`에서는 두 예시를 따로 추가하지 말고 하나의 `palette` 설정으로 합쳐야 한다.
+
+---
+
+## 폰트 바꾸기
+
+Material for MkDocs에서는 Google Fonts에 있는 폰트를 간단하게 적용할 수 있다.
+
+```yaml
+theme:
+  name: material
+  font:
+    text: Noto Sans KR
+    code: Roboto Mono
+```
+
+- `font.text`: 사이트의 본문과 제목에 사용할 폰트를 설정한다.
+- `font.code`: 코드 블록에 사용할 고정폭 폰트를 설정한다.
+
+`Noto Sans KR`은 한글을 표시할 때 사용할 수 있는 폰트이며, `Roboto Mono`는 코드 표시용 폰트이다. 사용하려는 글꼴은 Google Fonts에서 지원하는 이름으로 작성한다.
+
+Google Fonts를 자동으로 불러오지 않고 기본 시스템 폰트를 사용하고 싶다면 `font: false`로 설정할 수도 있다.
+
+---
+
+## 로고, 파비콘 넣기
+
+- **로고(Logo)**: 사이트 상단에 표시되는 이미지이다.
+- **파비콘(Favicon)**: 브라우저 탭의 사이트 이름 옆에 표시되는 작은 아이콘이다.
+
+먼저 이미지 파일을 `docs/images/` 폴더에 저장한다.
+
+```text
+project/
+├── docs/
+│   ├── index.md
+│   └── images/
+│       ├── logo.png
+│       └── favicon.png
+└── mkdocs.yml
+```
+
+그다음 `mkdocs.yml`에서 이미지 경로를 지정한다.
+
+```yaml
+theme:
+  name: material
+  logo: images/logo.png
+  favicon: images/favicon.png
+```
+
+이미지 경로는 `docs/` 폴더를 기준으로 작성한다. 예를 들어 `docs/images/logo.png`에 파일을 넣었다면 설정에는 `images/logo.png`라고 적는다.
+
+파일명이나 확장자가 실제 파일과 다르면 이미지가 표시되지 않을 수 있으므로 주의한다.
+
+---
+
+## features 옵션
+
+`features`는 Material for MkDocs에서 제공하는 부가 기능을 설정하는 옵션이다. 원하는 기능을 목록에 추가하면 해당 기능이 활성화된다.
+
+```yaml
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+```
+
+| 옵션 | 기능 |
+| --- | --- |
+| `navigation.tabs` | 최상위 메뉴를 화면 상단의 탭으로 표시한다. |
+| `navigation.sections` | 왼쪽 탐색 메뉴의 항목을 섹션으로 구분한다. |
+| `navigation.top` | 페이지 위쪽으로 이동하는 버튼을 추가한다. |
+| `search.suggest` | 검색할 때 추천 검색어를 표시한다. |
+| `search.highlight` | 검색 결과로 이동했을 때 검색어를 강조한다. |
+| `content.code.copy` | 코드 블록에 복사 버튼을 추가한다. |
+| `toc.follow` | 오른쪽 목차에서 현재 읽고 있는 부분을 따라가도록 한다. |
+
+`features`에 모든 기능을 추가할 필요는 없다. 사이트 구조나 취향에 맞는 옵션만 선택하면 된다.
+
+**참고:** `navigation.tabs`는 최상위 메뉴 구조에 따라 표시 방식이 달라진다.
+
+---
+
+## 커스텀 CSS
+
+`mkdocs.yml`에 있는 기본 설정만으로 원하는 디자인을 만들기 어렵다면 CSS 파일을 직접 작성하여 수정할 수 있다.
+
+예를 들어 본문 너비나 제목의 굵기를 변경할 수 있다.
+
+### 1. CSS 파일 만들기
+
+`docs/stylesheets/` 폴더 안에 `extra.css` 파일을 만든다.
+
+```text
+project/
+├── docs/
+│   ├── index.md
+│   └── stylesheets/
+│       └── extra.css
+└── mkdocs.yml
+```
+
+### 2. mkdocs.yml에 CSS 파일 연결하기
+
+```yaml
+extra_css:
+  - stylesheets/extra.css
+```
+
+`extra_css`는 `theme` 안쪽이 아니라 `site_name`, `theme`처럼 **최상위 Key**로 작성한다.
+
+### 3. CSS 작성하기
+
+`extra.css`에 다음과 같이 작성할 수 있다.
+
+```css
+/* 웹사이트 본문 영역의 최대 너비 */
+.md-grid {
+  max-width: 1360px;
+}
+
+/* 문서의 큰 제목 굵기 */
+.md-typeset h1 {
+  font-weight: 700;
+}
+```
+
+- `.md-grid`: 사이트 전체 콘텐츠 영역의 최대 너비를 조절한다.
+- `.md-typeset h1`: 본문에 있는 1단계 제목의 스타일을 변경한다.
+
+CSS 파일을 저장하면 `mkdocs serve`에서도 변경 사항을 확인할 수 있다.
+
+---
+
+## 설정할 때 주의할 점
+
+위의 YAML 코드는 각각의 기능을 설명하기 위한 **개별 예시**이다. 실제 `mkdocs.yml` 파일에 적용할 때는 `theme:` 항목을 여러 번 작성하지 않고 **하나의 `theme:` 아래에 필요한 설정을 합쳐야 한다.**
+
+예를 들어 색상, 폰트, 로고, 기능을 함께 적용하려면 다음과 같이 작성한다.
+
+```yaml
+site_name: Juny's Log
+site_description: 개인 기록 웹사이트
+site_author: Juny
+
+theme:
+  name: material
+  language: ko
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: 어두운 테마로 전환
+    - scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: 밝은 테마로 전환
+  font:
+    text: Noto Sans KR
+    code: Roboto Mono
+  logo: images/logo.png
+  favicon: images/favicon.png
+  features:
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+
+extra_css:
+  - stylesheets/extra.css
+```
+
+위 예시를 사용하려면 로고, 파비콘, CSS 파일을 안내한 경로에 실제로 만들어 두어야 한다. 또한 기존 `mkdocs.yml`에 `nav` 등 다른 설정이 있다면 지우지 않고 유지한다.
+
+## 참고 자료
+
+- [MkDocs 공식 문서 - 설정](https://www.mkdocs.org/user-guide/configuration/)
+- [Material for MkDocs - 색상](https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/)
+- [Material for MkDocs - 폰트](https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/)
+- [Material for MkDocs - 로고와 아이콘](https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/)
+- [Material for MkDocs - 탐색 기능](https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/)
+
+hfohdaodhsafo

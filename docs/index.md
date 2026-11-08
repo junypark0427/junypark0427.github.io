@@ -1,4 +1,4 @@
-# Juny's Log
+# Home
 ![mainpage.png](images/mainpage.png)
 
 안녕하세요! **Juny's Log**에 오신 것을 환영합니다.

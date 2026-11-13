@@ -1,10 +1,10 @@
-# 06. Git 기초, 배포
+\# 06. Git 기초, 배포
 
-## 1. Repository 만들기(Page 설정)
+## 📁 1. Repository 만들기(Page 설정)
 
 GitHub Pages는 Repository의 이름을 사용자 이름으로 만들면 `.github.io` 형식의 URL로 Web Site를 만들어 준다.
 
-따라서 우리는 사용자 이름과 같은 Repository를 만든다.
+따라서 우리는 사용자 이름을 이용한 Repository를 만든다.
 
 Repository 이름 규칙: `<username>.github.io`
 
@@ -16,9 +16,9 @@ Repository 이름 규칙: `<username>.github.io`
 4. 공개 범위를 `Public`으로 설정한다.
 5. `Create repository` 버튼을 클릭한다.
 
-### 파일 Upload
+### 📤 파일 Upload
 
-Local에서 작성했던 MkDocs 설정 파일을 GitHub에서 직접 Upload한다. 작성한 파일이 없다면 `Creating new file`을 이용한다.
+Local에서 작성했던 MkDocs 설정 파일을 GitHub에서 직접 Upload한다. 작성한 파일이 없다면 `Create new file`을 이용한다.
 
 **폴더 구조 확인**
 
@@ -40,7 +40,7 @@ GitHub에는 이 폴더의 내용 전체를 올린다.
 
 폴더째로 드래그하면 폴더 구조 그대로 올라간다.
 
-### mkdocs.yml 수정
+### ⚙️ mkdocs.yml 수정
 
 (Local에서 수정한 후 Uploading 권장)
 
@@ -72,7 +72,7 @@ GitHub 웹에서 `Upload files` → `Commit changes`를 클릭하면 별도로 G
 
 ---
 
-## 2. GitHub Actions 설정
+## 🤖 2. GitHub Actions 설정
 
 GitHub Actions는 반복적인 작업을 자동으로 처리해 주는 기능이다.
 
@@ -161,7 +161,7 @@ Workflow 파일에는 GitHub Actions가 언제, 어떤 작업을 실행할지 �
 
 ---
 
-## 3. GitHub Pages 설정 변경
+## 🌐 3. GitHub Pages 설정 변경
 
 GitHub Pages를 통해 웹사이트가 공개되도록 설정한다.
 
@@ -177,7 +177,7 @@ GitHub Pages를 통해 웹사이트가 공개되도록 설정한다.
 
 ---
 
-## 4. Actions 실행 확인
+## ✅ 4. Actions 실행 확인
 
 Workflow 파일을 생성한 후에는 GitHub Actions가 정상적으로 실행되는지 확인한다.
 
@@ -194,7 +194,7 @@ Workflow 파일을 생성한 후에는 GitHub Actions가 정상적으로 실행�
 
 ---
 
-## 5. 브라우저에서 확인
+## 🔎 5. 브라우저에서 확인
 
 배포가 정상적으로 완료되었다면 브라우저에서 Web Site를 확인할 수 있다.
 
@@ -214,7 +214,7 @@ Workflow 파일을 생성한 후에는 GitHub Actions가 정상적으로 실행�
 
 ---
 
-## 6. 앞으로의 작업 흐름
+## 🔄 6. 앞으로의 작업 흐름
 
 1. VSCode에서 Markdown 파일 작성, 수정
 2. GitHub 웹에서 `Upload files` → `Commit changes`
@@ -225,7 +225,7 @@ Workflow 파일을 생성한 후에는 GitHub Actions가 정상적으로 실행�
 
 ---
 
-## 참고: 터미널로 배포하는 방법
+## 💻 참고: 터미널로 배포하는 방법
 
 앞에서는 GitHub 웹사이트에서 파일을 직접 Upload하였다.
 
@@ -267,7 +267,7 @@ git push origin main
 
 Push가 완료되면 GitHub Actions가 자동으로 실행되어 Web Site가 업데이트된다.
 
-### 3. 공용 PC에서 로그인 정보 지우기
+### 🔒 3. 공용 PC에서 로그인 정보 지우기
 
 학교 컴퓨터 등 공용 PC에서 GitHub를 이용했다면 사용 후 계정 정보를 정리해야 한다.
 

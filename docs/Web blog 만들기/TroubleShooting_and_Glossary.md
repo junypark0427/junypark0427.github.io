@@ -6,9 +6,9 @@ MkDocs 웹사이트를 만들거나 GitHub로 파일을 관리하면서 자주 �
 
 ---
 
-## 1. Troubleshooting — 문제 해결
+## 🛠️ 1. Troubleshooting — 문제 해결
 
-### 먼저 확인할 것
+### 🔍 먼저 확인할 것
 
 어떤 문제가 발생했는지에 따라 아래 명령어로 상태를 확인한다.
 
@@ -27,7 +27,7 @@ git remote -v
 !!! tip "오류 메시지를 그대로 읽기"
     단순히 "작동하지 않는다"고 판단하기보다 터미널에서 `ERROR`, `WARNING`, `fatal`, `rejected` 등이 표시된 **첫 부분**부터 확인한다. 해결 방법을 검색하거나 질문할 때도 해당 메시지를 함께 제시하면 원인을 찾기 쉽다.
 
-### MkDocs / Markdown
+### 📝 MkDocs / Markdown
 
 #### 새 Markdown 파일이 왼쪽 메뉴에 나타나지 않음
 
@@ -108,7 +108,7 @@ python -m mkdocs serve
 
 가상환경을 사용하고 있다면 먼저 해당 환경을 활성화한다. 운영체제나 설치 방식에 따라 Python 실행 명령어가 `py` 또는 `python3`일 수도 있다.
 
-### Git / GitHub
+### 🐙 Git / GitHub
 
 #### `fatal: not a git repository`
 
@@ -203,9 +203,9 @@ GitHub 저장소에 Commit이 올라갔다는 사실과 **GitHub Pages 배포가
 
 ---
 
-## 2. Glossary — 용어 정리
+## 📖 2. Glossary — 용어 정리
 
-### Git / GitHub
+### 🐙 Git / GitHub
 
 | 용어 | 설명 |
 | --- | --- |
@@ -236,7 +236,7 @@ GitHub 저장소에 Commit이 올라갔다는 사실과 **GitHub Pages 배포가
 | Watch | Repository의 활동에 대한 알림을 구독하는 기능 |
 | `.gitignore` | Git이 추적하지 않을 파일·경로를 지정하는 파일 |
 
-### VS Code 상태 표시
+### 🏷️ VS Code 상태 표시
 
 | 표시 | 의미 |
 | --- | --- |
@@ -248,7 +248,7 @@ GitHub 저장소에 Commit이 올라갔다는 사실과 **GitHub Pages 배포가
 !!! warning "상태 코드의 문맥 구분"
     위 표는 **VS Code 탐색기에서 흔히 보이는 표시**를 설명한 것이다. 터미널에서 병합 충돌을 확인할 때의 `U`는 Unmerged 상태를 가리킬 수 있으므로 `git status`로 정확한 의미를 확인한다.
 
-### MkDocs / 웹사이트
+### 🌐 MkDocs / 웹사이트
 
 | 용어 | 설명 |
 | --- | --- |
@@ -274,7 +274,7 @@ GitHub 저장소에 Commit이 올라갔다는 사실과 **GitHub Pages 배포가
 
 ---
 
-## 3. 빠른 점검 순서
+## ✅ 3. 빠른 점검 순서
 
 문제가 생겼을 때는 다음 순서로 확인한다.
 
@@ -287,7 +287,7 @@ GitHub 저장소에 Commit이 올라갔다는 사실과 **GitHub Pages 배포가
 
 ---
 
-## 참고 자료
+## 📚 참고 자료
 
 - [MkDocs 공식 설정 문서](https://www.mkdocs.org/user-guide/configuration/)
 - [Git 공식 명령어 문서](https://git-scm.com/docs)

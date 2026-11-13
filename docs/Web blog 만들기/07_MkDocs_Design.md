@@ -4,7 +4,7 @@ MkDocs 웹사이트의 디자인은 주로 `mkdocs.yml` 파일에서 설정한�
 
 MkDocs의 설정을 GitHub에서 직접 테스트할 경우, 수정한 내용을 업로드한 후 배포가 완료될 때까지 기다려야 한다. 따라서 디자인을 변경할 때는 **Local 환경에서 `mkdocs serve` 명령어로 먼저 확인**하는 것이 편리하다.
 
-### Local에서 디자인 확인하기
+### 💻 Local에서 디자인 확인하기
 
 1. VSCode에서 MkDocs 프로젝트 폴더를 연다.
 2. 터미널에서 `mkdocs.yml` 파일이 있는 폴더로 이동한다.
@@ -14,7 +14,7 @@ MkDocs의 설정을 GitHub에서 직접 테스트할 경우, 수정한 내용을
    mkdocs serve
    ```
 
-4. 브라우저에서 `http://127.0.0.1:8000/`에 접속한다.
+4. 브라우저에서 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)에 접속한다.
 5. `mkdocs.yml`이나 `docs/` 내부 파일을 수정하고 저장하면 변경 사항이 자동으로 반영된다.
 
 터미널에서 `Ctrl + C`를 누르면 Local 서버를 종료할 수 있다.
@@ -23,7 +23,7 @@ MkDocs의 설정을 GitHub에서 직접 테스트할 경우, 수정한 내용을
 
 ---
 
-## 사이트 기본 정보
+## ⚙️ 사이트 기본 정보
 
 `mkdocs.yml`에서는 `site_name`, `theme`, `nav`처럼 최상위에 작성하는 Key의 **순서는 상관없다.** 다만 YAML에서는 들여쓰기가 구조를 결정하므로 주의해야 한다.
 
@@ -47,7 +47,7 @@ site_url: https://<username>.github.io/
 
 ---
 
-## 색상 바꾸기
+## 🎨 색상 바꾸기
 
 Material for MkDocs에서는 `theme` 아래의 `palette` 설정을 이용해 웹사이트의 색상을 변경할 수 있다.
 
@@ -90,7 +90,7 @@ theme:
 
 ---
 
-## 밝은/어두운 테마 토글 추가
+## 🌓 밝은/어두운 테마 토글 추가
 
 웹사이트 방문자가 밝은 테마와 어두운 테마를 직접 바꿀 수 있도록 토글 버튼을 추가할 수 있다.
 
@@ -126,7 +126,7 @@ theme:
 
 ---
 
-## 폰트 바꾸기
+## 🔤 폰트 바꾸기
 
 Material for MkDocs에서는 Google Fonts에 있는 폰트를 간단하게 적용할 수 있다.
 
@@ -147,7 +147,7 @@ Google Fonts를 자동으로 불러오지 않고 기본 시스템 폰트를 사�
 
 ---
 
-## 로고, 파비콘 넣기
+## 🖼️ 로고, 파비콘 넣기
 
 - **로고(Logo)**: 사이트 상단에 표시되는 이미지이다.
 - **파비콘(Favicon)**: 브라우저 탭의 사이트 이름 옆에 표시되는 작은 아이콘이다.
@@ -179,7 +179,7 @@ theme:
 
 ---
 
-## features 옵션
+## 🧩 features 옵션
 
 `features`는 Material for MkDocs에서 제공하는 부가 기능을 설정하는 옵션이다. 원하는 기능을 목록에 추가하면 해당 기능이 활성화된다.
 
@@ -212,7 +212,7 @@ theme:
 
 ---
 
-## 커스텀 CSS
+## 🎨 커스텀 CSS
 
 `mkdocs.yml`에 있는 기본 설정만으로 원하는 디자인을 만들기 어렵다면 CSS 파일을 직접 작성하여 수정할 수 있다.
 
@@ -263,7 +263,7 @@ CSS 파일을 저장하면 `mkdocs serve`에서도 변경 사항을 확인할 �
 
 ---
 
-## 설정할 때 주의할 점
+## ⚠️ 설정할 때 주의할 점
 
 위의 YAML 코드는 각각의 기능을 설명하기 위한 **개별 예시**이다. 실제 `mkdocs.yml` 파일에 적용할 때는 `theme:` 항목을 여러 번 작성하지 않고 **하나의 `theme:` 아래에 필요한 설정을 합쳐야 한다.**
 
@@ -306,12 +306,10 @@ extra_css:
 
 위 예시를 사용하려면 로고, 파비콘, CSS 파일을 안내한 경로에 실제로 만들어 두어야 한다. 또한 기존 `mkdocs.yml`에 `nav` 등 다른 설정이 있다면 지우지 않고 유지한다.
 
-## 참고 자료
+## 📚 참고 자료
 
 - [MkDocs 공식 문서 - 설정](https://www.mkdocs.org/user-guide/configuration/)
 - [Material for MkDocs - 색상](https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/)
 - [Material for MkDocs - 폰트](https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/)
 - [Material for MkDocs - 로고와 아이콘](https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/)
 - [Material for MkDocs - 탐색 기능](https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/)
-
-hfohdaodhsafo

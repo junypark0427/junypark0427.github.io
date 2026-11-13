@@ -4,7 +4,7 @@
 
 ---
 
-## 1. Markdown 치트시트
+## 📝 1. Markdown 치트시트
 
 Markdown은 일반 텍스트에 간단한 기호를 사용하여 제목, 목록, 표, 링크 등을 작성하는 문법이다. MkDocs에서는 `docs/` 폴더 안에 있는 `.md` 파일을 웹페이지로 변환한다.
 
@@ -12,12 +12,12 @@ Markdown은 일반 텍스트에 간단한 기호를 사용하여 제목, 목록,
 
 제목 앞에 `#`을 붙인다. `#`의 개수가 많아질수록 제목의 단계가 낮아진다.
 
-```markdown
+````markdown
 # 제목 1
 ## 제목 2
 ### 제목 3
 #### 제목 4
-```
+````
 
 일반적으로 한 페이지의 큰 제목에는 `#`을 한 번 사용하고, 세부 내용은 `##`, `###`으로 구분한다.
 
@@ -34,7 +34,7 @@ Markdown은 일반 텍스트에 간단한 기호를 사용하여 제목, 목록,
 
 순서가 없는 목록에는 `-`, 순서가 있는 목록에는 숫자를 사용한다.
 
-```markdown
+````markdown
 - 첫 번째 항목
 - 두 번째 항목
   - 하위 항목
@@ -42,26 +42,26 @@ Markdown은 일반 텍스트에 간단한 기호를 사용하여 제목, 목록,
 1. 첫 번째 단계
 2. 두 번째 단계
 3. 세 번째 단계
-```
+````
 
 하위 항목을 만들 때는 들여쓰기를 사용한다.
 
 ### 체크리스트
 
-```markdown
+````markdown
 - [x] 완료한 작업
 - [ ] 아직 하지 않은 작업
-```
+````
 
 Material 테마에서 체크리스트를 보기 좋게 표시하려면 `mkdocs.yml`의 `markdown_extensions`에 `pymdownx.tasklist`를 추가하면 된다.
 
-### 링크와 이미지
+### 🔗 링크와 이미지
 
-```markdown
+````markdown
 [GitHub 방문하기](https://github.com/)
 
 ![이미지 설명](images/example.png)
-```
+````
 
 - **링크:** `[표시할 글자](주소)`
 - **이미지:** `![대체 텍스트](이미지 경로)`
@@ -70,27 +70,27 @@ Material 테마에서 체크리스트를 보기 좋게 표시하려면 `mkdocs.y
 
 다른 Markdown 페이지로 이동하는 링크도 작성할 수 있다.
 
-```markdown
+````markdown
 [디자인 설정 보기](07_mkdocs_yml_디자인.md)
-```
+````
 
 위 예시는 연결할 두 파일이 같은 폴더에 있을 때 사용한다.
 
 ### 인용문과 구분선
 
-```markdown
+````markdown
 > 이 문장은 인용문이다.
 > 여러 줄로 작성할 수 있다.
 
 ---
-```
+````
 
 - `>`: 인용문
 - `---`: 문단을 구분하는 수평선 (단독 줄에 작성)
 
-### 코드 블록
+### 💻 코드 블록
 
-짧은 명령어는 백틱(`` ` ``) 한 쌍으로 감싸고, 여러 줄의 코드는 백틱 3개로 감싼다. 언어를 지정하면 문법 강조도 적용된다.
+짧은 명령어는 백틱(`) 한 쌍으로 감싸고, 여러 줄의 코드는 백틱 3개로 감싼다. 언어를 지정하면 문법 강조도 적용된다.
 
 ````markdown
 ```python
@@ -104,12 +104,12 @@ mkdocs serve
 
 ### 표
 
-```markdown
+````markdown
 | 항목 | 설명 |
 | --- | --- |
 | MkDocs | Markdown을 웹사이트로 변환 |
 | GitHub Pages | 웹사이트를 공개하는 서비스 |
-```
+````
 
 표의 두 번째 줄에 있는 `---`은 제목 행과 본문을 구분한다. 열은 `|` 기호로 나눈다.
 
@@ -121,7 +121,7 @@ Markdown에서는 **빈 줄을 넣으면 새로운 문단**이 만들어진다. 
 
 ---
 
-## 2. mkdocs.yml 옵션 정리
+## ⚙️ 2. mkdocs.yml 옵션 정리
 
 `mkdocs.yml`은 MkDocs 프로젝트의 설정 파일이다. 사이트 정보, 탐색 메뉴, 테마, 플러그인 등을 지정한다. **최상위 Key의 작성 순서는 상관없지만, YAML의 들여쓰기는 정확해야 한다.**
 
@@ -141,7 +141,7 @@ site_url: https://example.github.io/
 | `site_author` | 사이트 작성자 이름. 메타 정보에 사용된다. |
 | `site_url` | 배포된 사이트의 기본 주소. 실제 주소로 변경해야 한다. |
 
-### docs_dir / site_dir
+### 📁 docs_dir / site_dir
 
 ```yaml
 docs_dir: docs
@@ -161,7 +161,7 @@ project/
 
 일반적으로 `site/`는 자동 생성되는 폴더이므로 Git 관리 대상에서 제외한다. `.gitignore` 파일에 `site/`를 추가하면 된다.
 
-### nav - 목차 구성
+### 🧭 nav - 목차 구성
 
 `nav`는 웹사이트 메뉴에 표시할 페이지의 이름과 순서를 지정한다.
 
@@ -181,7 +181,7 @@ nav:
 
 `nav`에 없는 Markdown 파일도 빌드될 수 있지만, 메뉴에 자동으로 표시되지는 않는다. 실제로 존재하는 파일명과 경로를 정확하게 작성해야 한다.
 
-### theme - 테마 설정
+### 🎨 theme - 테마 설정
 
 ```yaml
 theme:
@@ -202,7 +202,7 @@ theme:
 
 색상과 `features`의 자세한 내용은 앞의 **07. mkdocs.yml 디자인** 페이지를 참고한다.
 
-### 다크/라이트 모드 전환 버튼
+### 🌓 다크/라이트 모드 전환 버튼
 
 `theme.palette`를 목록으로 작성하면 밝은 테마와 어두운 테마를 선택하는 버튼을 추가할 수 있다.
 
@@ -216,6 +216,7 @@ theme:
       toggle:
         icon: material/brightness-7
         name: 어두운 테마로 전환
+
     - scheme: slate
       primary: indigo
       accent: amber
@@ -231,7 +232,7 @@ theme:
 
 **주의:** `theme:`과 `palette:`는 같은 설정 파일에서 여러 번 중복하여 선언하지 않고, 기존 설정 안에 합쳐서 작성한다.
 
-### icon - 로고와 파비콘
+### 🖼️ icon - 로고와 파비콘
 
 Material 테마에서는 **내장 아이콘**을 로고로 사용하거나, `docs/` 폴더에 저장한 이미지 파일을 사용할 수 있다.
 
@@ -266,7 +267,7 @@ docs/
 
 `icon` 아래에 파비콘 경로를 넣는 것이 아니라 **`theme.favicon`으로 설정**한다. 로고는 `theme.icon.logo`와 `theme.logo` 중 사용할 방식을 선택하면 된다.
 
-### plugins - 플러그인
+### 🧩 plugins - 플러그인
 
 플러그인은 검색 기능이나 추가적인 페이지 처리처럼 기본 기능을 확장한다.
 
@@ -281,7 +282,7 @@ plugins:
 
 예를 들어 새로운 플러그인을 사용하려면 패키지 설치 방법과 설정 옵션을 해당 플러그인의 공식 문서에서 확인한다.
 
-### markdown_extensions - Markdown 확장
+### 📝 markdown_extensions - Markdown 확장
 
 `markdown_extensions`를 사용하면 기본 Markdown 이외의 문법을 지원할 수 있다.
 
@@ -306,7 +307,7 @@ markdown_extensions:
 
 **주의:** `Markdown_extensions`가 아니라 소문자 **`markdown_extensions`**로 작성한다. `pymdownx` 확장은 필요한 패키지가 설치된 상태여야 한다. Material for MkDocs 설치 시 주요 확장을 함께 사용할 수 있다.
 
-### extra - 추가 정보
+### ➕ extra - 추가 정보
 
 `extra`에는 테마에서 사용하는 추가 정보나 링크 등을 작성할 수 있다. 예를 들어 Material 테마의 소셜 링크를 넣을 수 있다.
 
@@ -321,7 +322,7 @@ extra:
 
 `extra`는 임의의 값을 담을 수 있는 설정이지만, **값을 적는 것만으로 모든 기능이 자동으로 생기지는 않는다.** 실제 표시 여부와 형식은 사용 중인 테마에서 지원하는지에 따라 달라진다.
 
-### copyright
+### ©️ copyright
 
 사이트 하단에 저작권 안내 문구를 표시한다.
 
@@ -331,7 +332,7 @@ copyright: "© 2026 Juny's Log"
 
 일반적으로 사이트의 푸터에 표시된다. `copyright`를 적었다고 해서 다른 사람이 만든 이미지나 글의 사용 허가가 자동으로 생기는 것은 아니다.
 
-### repo 연동
+### 🔗 repo 연동
 
 `repo_url`을 설정하면 웹사이트에서 GitHub Repository로 이동하는 링크를 표시할 수 있다.
 
@@ -356,7 +357,7 @@ theme:
 
 Repository가 공개되어 있더라도 다른 방문자가 바로 내 파일을 수정할 수 있는 것은 아니다. 편집 권한이 없다면 GitHub에서 Fork나 변경 제안 방식으로 작업해야 한다.
 
-### admonition (주석 박스) 사용법
+### 📌 admonition (주석 박스) 사용법
 
 Admonition은 본문에서 특별히 강조하고 싶은 내용에 사용하는 **안내 박스**이다. 프로그래밍 코드의 주석(`comment`)과는 다르다.
 
@@ -409,7 +410,7 @@ markdown_extensions:
 
 수업 정리나 개발 문서에서 **주의사항, 추가 설명, 실습 팁** 등을 구분할 때 유용하다.
 
-### 전체 예시
+### 📋 전체 예시
 
 아래는 지금까지 설명한 기능을 하나로 합친 `mkdocs.yml` 예시이다. `example` 부분을 자신의 GitHub 계정 정보로 변경하고, 예시에 있는 Markdown 파일이 실제로 존재하는지 확인해야 한다.
 
@@ -442,6 +443,7 @@ theme:
       toggle:
         icon: material/brightness-7
         name: 어두운 테마로 전환
+
     - scheme: slate
       primary: indigo
       accent: amber
@@ -479,6 +481,7 @@ extra:
 
 # 저작권 및 저장소
 copyright: "© 2026 Juny's Log"
+
 repo_url: https://github.com/example/example.github.io
 repo_name: GitHub Repository
 edit_uri: edit/main/docs/
@@ -486,7 +489,7 @@ edit_uri: edit/main/docs/
 
 위 예시는 로고로 내장 아이콘을 사용하므로 별도의 `logo.png` 파일은 필요하지 않다. 파비콘을 직접 등록하려면 이미지를 `docs/` 폴더 아래에 넣고 `theme.favicon`을 추가하면 된다.
 
-### 설정 확인하기
+### ✅ 설정 확인하기
 
 프로젝트 폴더에서 다음 명령어를 실행한다.
 
@@ -504,7 +507,7 @@ mkdocs build --strict
 
 ---
 
-## 참고 자료
+## 📚 참고 자료
 
 - [MkDocs 공식 문서 - Configuration](https://www.mkdocs.org/user-guide/configuration/)
 - [Material for MkDocs - 색상 설정](https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/)

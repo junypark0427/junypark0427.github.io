@@ -6,7 +6,7 @@ GitHub에서 파일을 업로드하는 방법뿐 아니라, 터미널을 이용�
 
 ---
 
-## 1. 터미널로 Git 다루기
+## 💻 1. 터미널로 Git 다루기
 
 VSCode에서 **Terminal → New Terminal**을 선택하면 현재 작업 폴더를 기준으로 터미널을 열 수 있다. 명령어를 실행하기 전에는 현재 경로와 Repository 상태부터 확인한다.
 
@@ -17,9 +17,10 @@ git remote -v       # 연결된 원격 Repository 확인
 ```
 
 !!! note "Git과 GitHub의 차이"
+
     **Git**은 파일 변경 이력을 관리하는 도구이고, **GitHub**는 Git Repository를 인터넷에 저장하고 공유할 수 있는 서비스이다. `commit`은 Local에 기록하는 작업이고, `push`는 기록한 Commit을 원격 Repository로 보내는 작업이다.
 
-### 원격 Repository와 Local 폴더 일치시키기
+### 🔗 원격 Repository와 Local 폴더 일치시키기
 
 작업 폴더의 상태에 따라 방법이 달라진다. **이미 GitHub에 파일이 있는지**, **현재 폴더가 Git Repository인지**를 먼저 확인해야 한다.
 
@@ -42,6 +43,7 @@ cd REPOSITORY
 `git clone`을 실행하면 Repository 이름의 폴더가 만들어지고, 원격 파일·Commit 기록·원격 연결(`origin`)이 함께 설정된다. 이후 VSCode에서 복제된 폴더를 열어 작업한다.
 
 !!! tip "이미 빈 폴더를 열어 둔 경우"
+
     **정말 아무 파일도 없는 빈 폴더**에서 `git clone <URL> .`을 실행하면 새 하위 폴더를 만들지 않고 현재 폴더에 복제할 수도 있다. 기존 파일이 있다면 이 방법 대신 별도 폴더에 복제하는 편이 안전하다.
 
 #### 2. VSCode에서 기존에 작업 폴더가 있을 경우
@@ -70,6 +72,7 @@ git pull --ff-only origin main
 작업 중인 파일에 저장되지 않은 변경 사항이나 Commit되지 않은 수정 사항이 있다면 먼저 확인하고 Commit하거나 별도로 백업한다. `pull`에서 오류가 나면 무작정 강제 덮어쓰기를 하지 않는다.
 
 !!! tip "현재 폴더가 어떤 Repository와 연결되어 있는지 확인"
+
     `git remote -v`로 `origin`의 주소를 확인할 수 있다. 주소가 잘못 연결되어 있다면, **정확한 Repository 주소를 확인한 뒤** 다음 명령어로 변경할 수 있다.
 
     ```bash
@@ -92,7 +95,7 @@ GitHub Repository에도 이미 파일과 Commit 기록이 있다면 **해당 Rep
 
 **C. 이미 Git 저장소이지만 원격 주소가 없는 경우**
 
-`git status`는 정상적으로 작동하지만 `git remote -v`에 아무것도 표시되지 않는 상황이다. **GitHub에 만든 원격 Repository가 비어 있을 때**에는 다음처럼 연결할 수 있다.
+`git status`는 정상적으로 작동하지만 `git remote -v`에 아무것도 표시되지 않는 상황이다. **GitHub에 만든 원격 Repository가 비어 있을 때**는 다음처럼 연결할 수 있다.
 
 ```bash
 git remote add origin https://github.com/USERNAME/REPOSITORY.git
@@ -103,6 +106,7 @@ git push -u origin main
 마지막 명령어는 현재 브랜치가 `main`일 때의 예시다. 원격에 이미 Commit이 있다면 먼저 원격의 기록을 확인하고, 2번 B처럼 복제 후 파일을 옮기는 방식을 고려한다.
 
 !!! warning "주의"
+
     내용이 있는 GitHub Repository와 별도로 만들어진 Local Repository를 무리하게 합치면 `unrelated histories` 오류가 발생할 수 있다. 이때 `--force`나 `reset --hard`를 곧바로 사용하는 것은 권장하지 않는다. 먼저 파일과 Commit 기록이 어느 쪽에 있는지 확인한다.
 
 #### 3. 현재 VSCode의 폴더 내용을 그대로 GitHub에 올리기
@@ -140,9 +144,10 @@ git push
 ```
 
 !!! warning "업로드 전 확인"
+
     `git add .`은 현재 폴더의 변경 사항을 넓게 추가하므로 `.env`, 비밀번호, API Key, 개인 파일 등이 포함되지 않았는지 확인한다. 올리지 않을 파일이나 빌드 결과물은 `.gitignore`에 등록한다. **원격 Repository에 이미 Commit이 있다면** 위의 `git init` → `push` 과정을 그대로 적용하지 말고 1번 또는 2번 방법으로 진행한다.
 
-### 버전 관리 (Commit 히스토리 보기)
+### 🕒 버전 관리 (Commit 히스토리 보기)
 
 Git은 파일의 변경 내역을 **Commit 단위**로 기록한다. 이전에 어떤 파일을 수정했는지 확인하거나 특정 변경 사항을 살펴볼 수 있다.
 
@@ -150,7 +155,7 @@ Git은 파일의 변경 내역을 **Commit 단위**로 기록한다. 이전에 �
 git log                             # 자세한 Commit 기록
 git log --oneline                   # 한 줄씩 간략하게 표시
 git log --oneline --graph --all     # 브랜치를 포함한 Commit 흐름 확인
-git log -5 --oneline --decorate      # 최근 5개의 Commit과 브랜치 이름 표시
+git log -5 --oneline --decorate     # 최근 5개의 Commit과 브랜치 이름 표시
 git show HEAD                       # 가장 최근 Commit의 내용 확인
 git diff                            # 아직 Stage에 추가하지 않은 수정 확인
 git diff --staged                   # Stage에 추가한 수정 확인
@@ -173,9 +178,10 @@ git show 7a3e921
 GitHub 웹사이트에서도 Repository의 **Commits** 기록을 눌러 변경 내역을 확인할 수 있다.
 
 !!! tip "이전 변경을 취소할 때"
+
     아직 Commit하지 않은 파일을 이전 상태로 되돌릴 때는 `git restore <파일명>`을 사용할 수 있지만 **해당 파일의 수정 내용이 사라질 수 있다.** 이미 공유한 Commit을 취소할 때는 새 취소 Commit을 만드는 `git revert <Commit ID>`를 검토한다. 작업 전 차이와 백업을 먼저 확인한다.
 
-### Branch
+### 🌿 Branch
 
 Branch는 **작업을 분기해서 독립적으로 진행할 수 있게 해주는 기능**이다. 기본 브랜치인 `main`을 유지하면서 새로운 기능이나 디자인을 따로 개발할 수 있다.
 
@@ -190,7 +196,7 @@ Branch는 **작업을 분기해서 독립적으로 진행할 수 있게 해주�
 
 ```bash
 git switch main                 # main 브랜치로 이동
-git pull --ff-only origin main # 최신 상태 확인
+git pull --ff-only origin main  # 최신 상태 확인
 git switch -c design            # design 브랜치 생성 후 이동
 
 # 파일을 수정한 뒤
@@ -211,6 +217,7 @@ git push -u origin design       # 원격에 새 브랜치 업로드
 | `git branch -d <브랜치명>` | 병합된 Local 브랜치 삭제 |
 
 !!! note "Branch와 폴더의 차이"
+
     Branch는 폴더를 복제하는 것이 아니라 **서로 다른 작업 이력을 관리하는 방식**이다. 브랜치를 전환하면 현재 폴더에서 보이는 파일 상태도 해당 브랜치에 맞게 바뀔 수 있다. 아직 Commit하지 않은 변경 사항이 있으면 브랜치 전환이 거부되거나 작업에 영향을 줄 수 있으므로 먼저 `git status`로 확인한다.
 
 #### 작업한 Branch를 합치기
@@ -226,7 +233,7 @@ git push origin main
 
 `merge` 중 같은 부분을 서로 다르게 수정했다면 충돌(Conflict)이 발생할 수 있다. 이때는 파일을 확인해 충돌을 해결해야 한다. 팀 프로젝트에서는 직접 `merge`하기보다 **Pull Request로 변경 사항을 검토한 뒤 병합하는 방식**도 많이 사용한다.
 
-### Pull Request, Issues
+### 🔀 Pull Request, Issues
 
 #### Pull Request (PR)
 
@@ -263,7 +270,7 @@ Pull Request는 여러 명이 개발할 때 특히 유용하지만, 혼자 개�
 
 Issue에는 담당자(`Assignee`), 분류용 `Label`, 일정용 `Milestone` 등을 설정할 수 있다. PR 본문에 `Closes #12`처럼 작성하면 PR이 기본 브랜치에 병합될 때 연결된 Issue를 자동으로 닫도록 할 수도 있다.
 
-### Fork, Star, Watch
+### ⭐ Fork, Star, Watch
 
 GitHub Repository의 오른쪽 위에서 자주 볼 수 있는 기능이다.
 
@@ -280,7 +287,7 @@ GitHub Repository의 오른쪽 위에서 자주 볼 수 있는 기능이다.
 
 보통 오픈소스에 기여할 때는 원본 Repository를 Fork하고, Fork한 Repository를 Clone한 다음 변경 사항을 Push하여 원본 프로젝트에 PR을 보낸다.
 
-### 오픈소스와 GitHub
+### 🌍 오픈소스와 GitHub
 
 **오픈소스(Open Source)**는 일정한 라이선스에 따라 소스 코드를 공개하고, 다른 사람이 사용·수정·배포할 수 있도록 한 소프트웨어를 말한다. GitHub에는 다양한 오픈소스 프로젝트의 코드와 개발 기록이 공개되어 있다.
 
@@ -297,9 +304,10 @@ GitHub를 통해 다른 사람의 코드를 살펴보거나, 버그를 제보하
 | `.gitignore` | Git으로 추적하지 않을 파일과 폴더 지정 |
 
 !!! warning "코드가 공개되어 있다고 모두 자유롭게 사용할 수 있는 것은 아니다"
+
     공개된 Repository라도 **라이선스가 없으면** 해당 코드를 마음대로 복제·수정·배포해도 된다는 뜻이 아니다. 사용 전 `LICENSE`와 관련 규칙을 확인한다.
 
-### GitHub Profile
+### 👤 GitHub Profile
 
 GitHub Profile은 자신이 관리하는 Repository, Commit 활동, 참여 프로젝트 등을 보여주는 페이지이다. 프로필에는 소개글을 작성하거나 대표 Repository를 고정(`Pin`)할 수 있다.
 
@@ -319,13 +327,14 @@ USERNAME/                 ← Repository 이름이 사용자 이름과 같음
 ```
 
 !!! note "GitHub Profile과 GitHub Pages의 차이"
+
     `USERNAME`이라는 이름의 Repository는 **Profile README**를 위한 것이고, `USERNAME.github.io`라는 이름의 Repository는 **GitHub Pages 사용자 웹사이트**를 만들 때 사용한다. 두 기능은 목적이 서로 다르다.
 
 GitHub Profile에는 진행했던 프로젝트의 Repository를 고정하고, 프로젝트마다 적절한 `README.md`를 작성해 두면 다른 사람이 작업 내용을 이해하기 쉽다.
 
 ---
 
-## 2. 자주 쓰는 Git 명령어
+## 📋 2. 자주 쓰는 Git 명령어
 
 다음은 터미널에서 자주 사용하는 명령어를 정리한 표이다.
 
@@ -347,7 +356,7 @@ GitHub Profile에는 진행했던 프로젝트의 Repository를 고정하고, �
 | `git remote add origin <URL>` | 원격 Repository 연결 추가 |
 | `git remote set-url origin <URL>` | 기존 `origin` 주소 변경 |
 | `git fetch origin` | 원격 변경 이력 가져오기 (자동 병합하지 않음) |
-| `git pull --ff-only origin main` | 충돌 없는 경우에만 원격 `main` 반영 |
+| `git pull --ff-only origin main` | Fast-forward가 가능한 경우에만 원격 `main` 반영 |
 | `git push origin main` | Local `main`을 GitHub에 업로드 |
 | `git push -u origin <브랜치명>` | 원격 브랜치 생성 및 추적 관계 설정 |
 | `git branch` | Local 브랜치 목록 확인 |
@@ -359,7 +368,7 @@ GitHub Profile에는 진행했던 프로젝트의 Repository를 고정하고, �
 | `git restore --staged <파일명>` | Stage에 올린 변경을 Stage에서 내리기 (작업 파일은 유지) |
 | `git revert <Commit ID>` | 기존 Commit을 되돌리는 새 Commit 생성 |
 
-### 기본 작업 흐름
+### 🔄 기본 작업 흐름
 
 이미 GitHub와 연결된 Repository에서 작업한다면 다음과 같은 순서로 진행할 수 있다.
 
@@ -379,11 +388,12 @@ git push origin main
 ```
 
 !!! tip "명령어를 외우는 것보다 중요한 점"
+
     `status`로 상태를 확인하고, `add`로 기록할 파일을 선택한 다음, `commit`으로 저장하고, `push`로 GitHub에 올리는 흐름을 이해하는 것이 중요하다. 다른 컴퓨터나 팀원이 수정한 내용이 있을 때는 먼저 `fetch` 또는 `pull`로 원격 상태를 확인한다.
 
 ---
 
-### VS Code 탐색기의 Git 표시
+### 🏷️ VS Code 탐색기의 Git 표시
 
 VS Code 탐색기에서 보이는 상태 표시는 Git이 파일을 어떻게 관리하는지 알려준다.
 
@@ -398,7 +408,7 @@ VS Code 탐색기에서 보이는 상태 표시는 Git이 파일을 어떻게 �
 
 ---
 
-## 참고 자료
+## 📚 참고 자료
 
 - [Git 공식 명령어 문서](https://git-scm.com/docs)
 - [GitHub Docs — 원격 Repository 변경 사항 가져오기](https://docs.github.com/en/get-started/using-git/getting-changes-from-a-remote-repository)

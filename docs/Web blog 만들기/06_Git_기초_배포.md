@@ -1,4 +1,4 @@
-\# 06. Git 기초, 배포
+# 06. Git 기초, 배포
 
 ## 📁 1. Repository 만들기(Page 설정)
 
